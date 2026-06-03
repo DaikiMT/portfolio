@@ -1,25 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap");
 @import "tailwindcss";
+
+@theme {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-border: hsl(var(--border));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.75rem;
+  --radius-3xl: 2.25rem;
+}
 
 :root {
   color-scheme: dark;
-  font-family:
-    Inter,
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
+  --background: 120 7% 5%;
+  --foreground: 55 100% 94%;
+  --card: 120 5% 8%;
+  --card-foreground: 55 100% 94%;
+  --border: 60 10% 18%;
+  --muted: 120 4% 12%;
+  --muted-foreground: 60 9% 70%;
+  --primary: 260 100% 70%;
+  --primary-foreground: 55 100% 96%;
+  --accent: 174 86% 46%;
+  --accent-foreground: 120 7% 5%;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 button,
@@ -27,4 +61,45 @@ input,
 textarea,
 select {
   font: inherit;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+.section-shell {
+  width: min(1120px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.section-divider {
+  border-top: 1px solid hsl(var(--border));
+}
+
+.accent-purple {
+  color: hsl(var(--primary));
+}
+
+.accent-cyan {
+  color: hsl(var(--accent));
+}
+
+.accent-yellow {
+  color: #ffd166;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-rise {
+  animation: rise-in 700ms ease both;
 }
