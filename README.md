@@ -4,7 +4,7 @@ Professional portfolio scaffold for Adrian Melgar, branded as Daiki.
 
 ## Stack
 
-- Vite
+- Vite+
 - Vue
 - TypeScript
 - Tailwind CSS
