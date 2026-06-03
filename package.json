@@ -10,19 +10,22 @@
     "check": "vp check"
   },
   "dependencies": {
-    "@tailwindcss/postcss": "latest",
-    "class-variance-authority": "latest",
-    "clsx": "latest",
-    "lucide-vue-next": "latest",
-    "tailwind-merge": "latest",
-    "tailwindcss": "latest",
-    "vue": "latest"
+    "@lucide/vue": "1.17.0",
+    "@tailwindcss/postcss": "4.3.0",
+    "class-variance-authority": "0.7.1",
+    "clsx": "2.1.1",
+    "tailwind-merge": "3.6.0",
+    "tailwindcss": "4.3.0",
+    "vue": "3.5.35"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "latest",
-    "typescript": "latest",
-    "vite": "latest",
-    "vite-plus": "latest",
-    "vue-tsc": "latest"
+    "@vitejs/plugin-vue": "6.0.7",
+    "typescript": "6.0.3",
+    "vite": "8.0.16",
+    "vite-plus": "0.1.24",
+    "vue-tsc": "3.3.3"
+  },
+  "engines": {
+    "node": ">=20.19.0"
   }
 }

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowUpRight } from "lucide-vue-next";
+import { ArrowUpRight } from "@lucide/vue";
 import { links, profile } from "@/data/portfolio";
 import Button from "@/components/ui/Button.vue";
 </script>
@@ -23,10 +23,18 @@ import Button from "@/components/ui/Button.vue";
               {{ links.email }}
               <ArrowUpRight class="h-4 w-4" aria-hidden="true" />
             </Button>
-            <Button :href="links.github" variant="secondary" target="_blank" rel="noreferrer"
+            <Button
+              :href="links.github"
+              variant="secondary"
+              target="_blank"
+              rel="noopener noreferrer"
               >GitHub</Button
             >
-            <Button :href="links.linkedin" variant="secondary" target="_blank" rel="noreferrer"
+            <Button
+              :href="links.linkedin"
+              variant="secondary"
+              target="_blank"
+              rel="noopener noreferrer"
               >LinkedIn</Button
             >
           </div>
