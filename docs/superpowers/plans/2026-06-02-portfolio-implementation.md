@@ -38,6 +38,7 @@
 ## Task 1: Initialize Vite+ Vue TypeScript Project
 
 **Files:**
+
 - Create: `/home/daiki/dev/portfolio/package.json`
 - Create: `/home/daiki/dev/portfolio/index.html`
 - Create: `/home/daiki/dev/portfolio/tsconfig.json`
@@ -128,6 +129,7 @@ Expected: initial scaffold commit is created.
 ## Task 2: Configure Tailwind And shadcn-Style Primitives
 
 **Files:**
+
 - Create: `/home/daiki/dev/portfolio/components.json`
 - Create: `/home/daiki/dev/portfolio/tailwind.config.ts`
 - Create: `/home/daiki/dev/portfolio/postcss.config.js`
@@ -143,18 +145,18 @@ Expected: initial scaffold commit is created.
 Set `/home/daiki/dev/portfolio/vite.config.ts` to:
 
 ```ts
-import { fileURLToPath, URL } from 'node:url'
-import vue from '@vitejs/plugin-vue'
-import { defineConfig } from 'vite'
+import { fileURLToPath, URL } from "node:url";
+import vue from "@vitejs/plugin-vue";
+import { defineConfig } from "vite";
 
 export default defineConfig({
   plugins: [vue()],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
-})
+});
 ```
 
 - [ ] **Step 2: Create shadcn config**
@@ -186,37 +188,37 @@ Create `/home/daiki/dev/portfolio/components.json`:
 Create `/home/daiki/dev/portfolio/tailwind.config.ts`:
 
 ```ts
-import type { Config } from 'tailwindcss'
+import type { Config } from "tailwindcss";
 
 export default {
-  content: ['./index.html', './src/**/*.{vue,ts}'],
+  content: ["./index.html", "./src/**/*.{vue,ts}"],
   theme: {
     extend: {
       colors: {
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
-        border: 'hsl(var(--border))',
-        muted: 'hsl(var(--muted))',
-        'muted-foreground': 'hsl(var(--muted-foreground))',
-        primary: 'hsl(var(--primary))',
-        'primary-foreground': 'hsl(var(--primary-foreground))',
-        accent: 'hsl(var(--accent))',
-        'accent-foreground': 'hsl(var(--accent-foreground))',
-        card: 'hsl(var(--card))',
-        'card-foreground': 'hsl(var(--card-foreground))',
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        border: "hsl(var(--border))",
+        muted: "hsl(var(--muted))",
+        "muted-foreground": "hsl(var(--muted-foreground))",
+        primary: "hsl(var(--primary))",
+        "primary-foreground": "hsl(var(--primary-foreground))",
+        accent: "hsl(var(--accent))",
+        "accent-foreground": "hsl(var(--accent-foreground))",
+        card: "hsl(var(--card))",
+        "card-foreground": "hsl(var(--card-foreground))",
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
       },
       borderRadius: {
-        xl: '1.25rem',
-        '2xl': '1.75rem',
-        '3xl': '2.25rem',
+        xl: "1.25rem",
+        "2xl": "1.75rem",
+        "3xl": "2.25rem",
       },
     },
   },
   plugins: [],
-} satisfies Config
+} satisfies Config;
 ```
 
 - [ ] **Step 4: Create PostCSS config**
@@ -226,9 +228,9 @@ Create `/home/daiki/dev/portfolio/postcss.config.js`:
 ```js
 export default {
   plugins: {
-    '@tailwindcss/postcss': {},
+    "@tailwindcss/postcss": {},
   },
-}
+};
 ```
 
 - [ ] **Step 5: Create class merge helper**
@@ -236,11 +238,11 @@ export default {
 Create `/home/daiki/dev/portfolio/src/lib/utils.ts`:
 
 ```ts
-import { clsx, type ClassValue } from 'clsx'
-import { twMerge } from 'tailwind-merge'
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 ```
 
@@ -250,29 +252,32 @@ Create `/home/daiki/dev/portfolio/src/components/ui/Button.vue`:
 
 ```vue
 <script setup lang="ts">
-import { computed } from 'vue'
-import { cn } from '@/lib/utils'
+import { computed } from "vue";
+import { cn } from "@/lib/utils";
 
 const props = withDefaults(
   defineProps<{
-    href?: string
-    variant?: 'primary' | 'secondary' | 'ghost'
-    class?: string
+    href?: string;
+    variant?: "primary" | "secondary" | "ghost";
+    class?: string;
   }>(),
   {
-    variant: 'primary',
+    variant: "primary",
   },
-)
+);
 
 const classes = computed(() =>
   cn(
-    'inline-flex items-center justify-center gap-2 rounded-full border px-5 py-3 text-sm font-semibold transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
-    props.variant === 'primary' && 'border-primary bg-primary text-primary-foreground hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(139,92,246,0.35)]',
-    props.variant === 'secondary' && 'border-border bg-card text-foreground hover:border-primary hover:text-primary',
-    props.variant === 'ghost' && 'border-transparent bg-transparent text-muted-foreground hover:text-foreground',
+    "inline-flex items-center justify-center gap-2 rounded-full border px-5 py-3 text-sm font-semibold transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
+    props.variant === "primary" &&
+      "border-primary bg-primary text-primary-foreground hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(139,92,246,0.35)]",
+    props.variant === "secondary" &&
+      "border-border bg-card text-foreground hover:border-primary hover:text-primary",
+    props.variant === "ghost" &&
+      "border-transparent bg-transparent text-muted-foreground hover:text-foreground",
     props.class,
   ),
-)
+);
 </script>
 
 <template>
@@ -291,13 +296,20 @@ Create `/home/daiki/dev/portfolio/src/components/ui/Card.vue`:
 
 ```vue
 <script setup lang="ts">
-import { cn } from '@/lib/utils'
+import { cn } from "@/lib/utils";
 
-defineProps<{ class?: string }>()
+defineProps<{ class?: string }>();
 </script>
 
 <template>
-  <article :class="cn('rounded-3xl border border-border bg-card p-6 text-card-foreground transition duration-200 hover:-translate-y-1 hover:border-primary/60', $props.class)">
+  <article
+    :class="
+      cn(
+        'rounded-3xl border border-border bg-card p-6 text-card-foreground transition duration-200 hover:-translate-y-1 hover:border-primary/60',
+        $props.class,
+      )
+    "
+  >
     <slot />
   </article>
 </template>
@@ -309,13 +321,20 @@ Create `/home/daiki/dev/portfolio/src/components/ui/Badge.vue`:
 
 ```vue
 <script setup lang="ts">
-import { cn } from '@/lib/utils'
+import { cn } from "@/lib/utils";
 
-defineProps<{ class?: string }>()
+defineProps<{ class?: string }>();
 </script>
 
 <template>
-  <span :class="cn('inline-flex items-center rounded-full border border-border bg-muted px-3 py-1 text-xs font-semibold text-foreground', $props.class)">
+  <span
+    :class="
+      cn(
+        'inline-flex items-center rounded-full border border-border bg-muted px-3 py-1 text-xs font-semibold text-foreground',
+        $props.class,
+      )
+    "
+  >
     <slot />
   </span>
 </template>
@@ -326,8 +345,8 @@ defineProps<{ class?: string }>()
 Set `/home/daiki/dev/portfolio/src/style.css` to:
 
 ```css
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap');
-@import 'tailwindcss';
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap");
+@import "tailwindcss";
 
 :root {
   --background: 120 7% 5%;
@@ -426,6 +445,7 @@ Expected: commit created.
 ## Task 3: Add Typed Portfolio Data
 
 **Files:**
+
 - Create: `/home/daiki/dev/portfolio/src/data/portfolio.ts`
 
 - [ ] **Step 1: Create portfolio data module**
@@ -434,89 +454,105 @@ Create `/home/daiki/dev/portfolio/src/data/portfolio.ts`:
 
 ```ts
 export type Service = {
-  title: string
-  description: string
-  accent: 'cyan' | 'purple' | 'yellow' | 'green'
-}
+  title: string;
+  description: string;
+  accent: "cyan" | "purple" | "yellow" | "green";
+};
 
 export type Project = {
-  title: string
-  status: 'In Progress' | 'Coming Soon'
-  year: string
-  type: string
-  summary: string
-  technologies: string[]
-}
+  title: string;
+  status: "In Progress" | "Coming Soon";
+  year: string;
+  type: string;
+  summary: string;
+  technologies: string[];
+};
 
 export const profile = {
-  brand: 'Daiki',
-  name: 'Adrian Melgar',
-  title: 'Junior Full-Stack Developer',
-  location: 'Based in Peru',
-  availability: 'Available remotely',
-  headline: 'JUNIOR FULL-STACK DEVELOPER',
-  intro: 'Building practical web apps with Vue, Python, FastAPI, and databases.',
+  brand: "Daiki",
+  name: "Adrian Melgar",
+  title: "Junior Full-Stack Developer",
+  location: "Based in Peru",
+  availability: "Available remotely",
+  headline: "JUNIOR FULL-STACK DEVELOPER",
+  intro: "Building practical web apps with Vue, Python, FastAPI, and databases.",
   about:
-    'I am Adrian Melgar, a junior full-stack developer focused on building clean interfaces, useful APIs, and database-backed web applications. I am growing through hands-on projects and looking for opportunities where I can contribute, learn quickly, and ship reliable work.',
-} as const
+    "I am Adrian Melgar, a junior full-stack developer focused on building clean interfaces, useful APIs, and database-backed web applications. I am growing through hands-on projects and looking for opportunities where I can contribute, learn quickly, and ship reliable work.",
+} as const;
 
 export const links = {
-  email: 'adrian.melgar.t@gmail.com',
-  github: 'https://github.com/DaikiMT',
-  linkedin: 'https://www.linkedin.com/in/adrianmelgart/',
-} as const
+  email: "adrian.melgar.t@gmail.com",
+  github: "https://github.com/DaikiMT",
+  linkedin: "https://www.linkedin.com/in/adrianmelgart/",
+} as const;
 
 export const services: Service[] = [
   {
-    title: 'Frontend Interfaces',
-    description: 'Creating responsive Vue interfaces that are clear, accessible, and easy to use.',
-    accent: 'cyan',
+    title: "Frontend Interfaces",
+    description: "Creating responsive Vue interfaces that are clear, accessible, and easy to use.",
+    accent: "cyan",
   },
   {
-    title: 'Backend APIs',
-    description: 'Building practical FastAPI services that connect frontend flows to real data.',
-    accent: 'purple',
+    title: "Backend APIs",
+    description: "Building practical FastAPI services that connect frontend flows to real data.",
+    accent: "purple",
   },
   {
-    title: 'Databases',
-    description: 'Working with PostgreSQL and Oracle DB to model, query, and organize application data.',
-    accent: 'yellow',
+    title: "Databases",
+    description:
+      "Working with PostgreSQL and Oracle DB to model, query, and organize application data.",
+    accent: "yellow",
   },
   {
-    title: 'Deployment & Tools',
-    description: 'Using Git, GitHub, Vite+, and AWS foundations to support reliable delivery.',
-    accent: 'green',
+    title: "Deployment & Tools",
+    description: "Using Git, GitHub, Vite+, and AWS foundations to support reliable delivery.",
+    accent: "green",
   },
-]
+];
 
 export const projects: Project[] = [
   {
-    title: 'Portfolio Website',
-    status: 'In Progress',
-    year: '2026',
-    type: 'Frontend Portfolio',
-    summary: 'A dark, animated portfolio scaffold for presenting my work and growth as a developer.',
-    technologies: ['Vite+', 'Vue', 'TypeScript', 'shadcn'],
+    title: "Portfolio Website",
+    status: "In Progress",
+    year: "2026",
+    type: "Frontend Portfolio",
+    summary:
+      "A dark, animated portfolio scaffold for presenting my work and growth as a developer.",
+    technologies: ["Vite+", "Vue", "TypeScript", "shadcn"],
   },
   {
-    title: 'Full-Stack Dashboard',
-    status: 'Coming Soon',
-    year: '2026',
-    type: 'Full-Stack App',
-    summary: 'A future dashboard project focused on API design, data views, and database-backed workflows.',
-    technologies: ['Vue', 'FastAPI', 'PostgreSQL'],
+    title: "Full-Stack Dashboard",
+    status: "Coming Soon",
+    year: "2026",
+    type: "Full-Stack App",
+    summary:
+      "A future dashboard project focused on API design, data views, and database-backed workflows.",
+    technologies: ["Vue", "FastAPI", "PostgreSQL"],
   },
   {
-    title: 'Automation Tool',
-    status: 'Coming Soon',
-    year: '2026',
-    type: 'Developer Tooling',
-    summary: 'A future utility project for automating repetitive workflows with a simple web interface.',
-    technologies: ['Python', 'Vue', 'GitHub'],
+    title: "Automation Tool",
+    status: "Coming Soon",
+    year: "2026",
+    type: "Developer Tooling",
+    summary:
+      "A future utility project for automating repetitive workflows with a simple web interface.",
+    technologies: ["Python", "Vue", "GitHub"],
   },
-]
+];
 
-export const stack = ['Vue', 'Vite+', 'JavaScript', 'TypeScript', 'Python', 'FastAPI', 'PostgreSQL', 'Oracle DB', 'Git', 'GitHub', 'AWS'] as const
+export const stack = [
+  "Vue",
+  "Vite+",
+  "JavaScript",
+  "TypeScript",
+  "Python",
+  "FastAPI",
+  "PostgreSQL",
+  "Oracle DB",
+  "Git",
+  "GitHub",
+  "AWS",
+] as const;
 ```
 
 - [ ] **Step 2: Verify data module compiles**
@@ -543,6 +579,7 @@ Expected: commit created.
 ## Task 4: Build Page Sections
 
 **Files:**
+
 - Create: `/home/daiki/dev/portfolio/src/components/Navbar.vue`
 - Create: `/home/daiki/dev/portfolio/src/components/HeroSection.vue`
 - Create: `/home/daiki/dev/portfolio/src/components/AboutSection.vue`
@@ -558,27 +595,34 @@ Create `/home/daiki/dev/portfolio/src/components/Navbar.vue`:
 
 ```vue
 <script setup lang="ts">
-import { Mail } from 'lucide-vue-next'
-import { links, profile } from '@/data/portfolio'
-import Button from '@/components/ui/Button.vue'
+import { Mail } from "lucide-vue-next";
+import { links, profile } from "@/data/portfolio";
+import Button from "@/components/ui/Button.vue";
 
 const navItems = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Stack', href: '#stack' },
-]
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
+  { label: "Projects", href: "#projects" },
+  { label: "Stack", href: "#stack" },
+];
 </script>
 
 <template>
-  <header class="fixed left-0 right-0 top-0 z-50 border-b border-border/80 bg-background/80 backdrop-blur-xl">
+  <header
+    class="fixed left-0 right-0 top-0 z-50 border-b border-border/80 bg-background/80 backdrop-blur-xl"
+  >
     <nav class="section-shell flex h-16 items-center justify-between gap-4">
       <a href="#home" class="rounded-full border border-border px-4 py-2 text-sm font800">
         <span class="mr-2 inline-block size-3 rounded-full bg-primary" />{{ profile.brand }}
       </a>
 
       <div class="hidden rounded-full border border-border bg-card/80 px-2 py-2 md:flex">
-        <a v-for="item in navItems" :key="item.href" :href="item.href" class="rounded-full px-4 py-2 text-sm font-semibold text-muted-foreground transition hover:bg-muted hover:text-foreground">
+        <a
+          v-for="item in navItems"
+          :key="item.href"
+          :href="item.href"
+          class="rounded-full px-4 py-2 text-sm font-semibold text-muted-foreground transition hover:bg-muted hover:text-foreground"
+        >
           {{ item.label }}
         </a>
       </div>
@@ -598,10 +642,10 @@ Create `/home/daiki/dev/portfolio/src/components/HeroSection.vue`:
 
 ```vue
 <script setup lang="ts">
-import { Github, Linkedin, Mail } from 'lucide-vue-next'
-import { links, profile } from '@/data/portfolio'
-import Badge from '@/components/ui/Badge.vue'
-import Button from '@/components/ui/Button.vue'
+import { Github, Linkedin, Mail } from "lucide-vue-next";
+import { links, profile } from "@/data/portfolio";
+import Badge from "@/components/ui/Badge.vue";
+import Button from "@/components/ui/Button.vue";
 </script>
 
 <template>
@@ -616,13 +660,17 @@ import Button from '@/components/ui/Button.vue'
         {{ profile.name }}
       </p>
 
-      <h1 class="text-balance text-6xl font-black leading-[0.9] tracking-tight sm:text-7xl lg:text-8xl">
+      <h1
+        class="text-balance text-6xl font-black leading-[0.9] tracking-tight sm:text-7xl lg:text-8xl"
+      >
         <span class="accent-purple">JUNIOR</span><br />
         <span>FULL-STACK</span><br />
         <span class="accent-cyan">DEVELOPER</span>
       </h1>
 
-      <p class="mx-auto mt-8 max-w-2xl text-xl font-semibold leading-relaxed text-foreground sm:text-2xl">
+      <p
+        class="mx-auto mt-8 max-w-2xl text-xl font-semibold leading-relaxed text-foreground sm:text-2xl"
+      >
         {{ profile.intro }}
       </p>
 
@@ -651,8 +699,8 @@ Create `/home/daiki/dev/portfolio/src/components/AboutSection.vue`:
 
 ```vue
 <script setup lang="ts">
-import { Zap } from 'lucide-vue-next'
-import { profile } from '@/data/portfolio'
+import { Zap } from "lucide-vue-next";
+import { profile } from "@/data/portfolio";
 </script>
 
 <template>
@@ -684,25 +732,31 @@ Create `/home/daiki/dev/portfolio/src/components/WhatIDoSection.vue`:
 
 ```vue
 <script setup lang="ts">
-import { Code2, Database, Rocket, PanelsTopLeft } from 'lucide-vue-next'
-import { services } from '@/data/portfolio'
-import Card from '@/components/ui/Card.vue'
+import { Code2, Database, Rocket, PanelsTopLeft } from "lucide-vue-next";
+import { services } from "@/data/portfolio";
+import Card from "@/components/ui/Card.vue";
 
-const icons = [PanelsTopLeft, Code2, Database, Rocket]
+const icons = [PanelsTopLeft, Code2, Database, Rocket];
 </script>
 
 <template>
   <section id="services" class="section-divider py-24">
     <div class="section-shell">
-      <p class="mb-10 text-center text-sm font-bold uppercase tracking-[0.35em] text-primary">What I Do</p>
+      <p class="mb-10 text-center text-sm font-bold uppercase tracking-[0.35em] text-primary">
+        What I Do
+      </p>
       <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         <Card v-for="(service, index) in services" :key="service.title" class="min-h-56">
-          <component :is="icons[index]" class="mb-8 size-9" :class="{
-            'text-cyan-400': service.accent === 'cyan',
-            'text-primary': service.accent === 'purple',
-            'text-yellow-300': service.accent === 'yellow',
-            'text-green-400': service.accent === 'green',
-          }" />
+          <component
+            :is="icons[index]"
+            class="mb-8 size-9"
+            :class="{
+              'text-cyan-400': service.accent === 'cyan',
+              'text-primary': service.accent === 'purple',
+              'text-yellow-300': service.accent === 'yellow',
+              'text-green-400': service.accent === 'green',
+            }"
+          />
           <h3 class="mb-4 text-xl font-bold">{{ service.title }}</h3>
           <p class="leading-7 text-muted-foreground">{{ service.description }}</p>
         </Card>
@@ -718,9 +772,9 @@ Create `/home/daiki/dev/portfolio/src/components/ProjectsSection.vue`:
 
 ```vue
 <script setup lang="ts">
-import { ArrowUpRight } from 'lucide-vue-next'
-import { projects } from '@/data/portfolio'
-import Badge from '@/components/ui/Badge.vue'
+import { ArrowUpRight } from "lucide-vue-next";
+import { projects } from "@/data/portfolio";
+import Badge from "@/components/ui/Badge.vue";
 </script>
 
 <template>
@@ -737,21 +791,33 @@ import Badge from '@/components/ui/Badge.vue'
       </div>
 
       <div class="divide-y divide-border border-y border-border">
-        <article v-for="project in projects" :key="project.title" class="group grid gap-6 py-10 transition hover:bg-card/50 md:grid-cols-[1fr_1.2fr_0.2fr] md:items-center">
+        <article
+          v-for="project in projects"
+          :key="project.title"
+          class="group grid gap-6 py-10 transition hover:bg-card/50 md:grid-cols-[1fr_1.2fr_0.2fr] md:items-center"
+        >
           <div>
-            <h3 class="text-3xl font-bold transition group-hover:text-accent">{{ project.title }}</h3>
+            <h3 class="text-3xl font-bold transition group-hover:text-accent">
+              {{ project.title }}
+            </h3>
             <p class="mt-2 text-muted-foreground">{{ project.year }} · {{ project.type }}</p>
           </div>
           <div>
             <Badge class="mb-4">{{ project.status }}</Badge>
             <p class="mb-4 leading-7 text-muted-foreground">{{ project.summary }}</p>
             <div class="flex flex-wrap gap-2">
-              <Badge v-for="technology in project.technologies" :key="technology" class="bg-transparent text-muted-foreground">
+              <Badge
+                v-for="technology in project.technologies"
+                :key="technology"
+                class="bg-transparent text-muted-foreground"
+              >
                 {{ technology }}
               </Badge>
             </div>
           </div>
-          <ArrowUpRight class="size-8 text-muted-foreground transition group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-primary" />
+          <ArrowUpRight
+            class="size-8 text-muted-foreground transition group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-primary"
+          />
         </article>
       </div>
     </div>
@@ -765,8 +831,8 @@ Create `/home/daiki/dev/portfolio/src/components/TechStackSection.vue`:
 
 ```vue
 <script setup lang="ts">
-import { stack } from '@/data/portfolio'
-import Badge from '@/components/ui/Badge.vue'
+import { stack } from "@/data/portfolio";
+import Badge from "@/components/ui/Badge.vue";
 </script>
 
 <template>
@@ -792,9 +858,9 @@ Create `/home/daiki/dev/portfolio/src/components/FooterSection.vue`:
 
 ```vue
 <script setup lang="ts">
-import { ArrowRight, Github, Linkedin, Mail } from 'lucide-vue-next'
-import { links, profile } from '@/data/portfolio'
-import Button from '@/components/ui/Button.vue'
+import { ArrowRight, Github, Linkedin, Mail } from "lucide-vue-next";
+import { links, profile } from "@/data/portfolio";
+import Button from "@/components/ui/Button.vue";
 </script>
 
 <template>
@@ -803,9 +869,12 @@ import Button from '@/components/ui/Button.vue'
       <div class="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
         <div>
           <p class="text-2xl font-bold">
-            Where <span class="accent-purple">learning</span>, <span class="accent-cyan">building</span>, and practical web development meet.
+            Where <span class="accent-purple">learning</span>,
+            <span class="accent-cyan">building</span>, and practical web development meet.
           </p>
-          <h2 class="mt-12 break-words text-7xl font-black leading-none tracking-tighter text-foreground sm:text-8xl lg:text-9xl">
+          <h2
+            class="mt-12 break-words text-7xl font-black leading-none tracking-tighter text-foreground sm:text-8xl lg:text-9xl"
+          >
             {{ profile.brand }}
           </h2>
         </div>
@@ -824,16 +893,34 @@ import Button from '@/components/ui/Button.vue'
           <div>
             <h3 class="mb-4 text-lg font-bold text-accent">Follow / Contact</h3>
             <div class="grid gap-3">
-              <a :href="`mailto:${links.email}`" class="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground"><Mail class="size-4" /> Email</a>
-              <a :href="links.github" target="_blank" class="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground"><Github class="size-4" /> GitHub</a>
-              <a :href="links.linkedin" target="_blank" class="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground"><Linkedin class="size-4" /> LinkedIn</a>
+              <a
+                :href="`mailto:${links.email}`"
+                class="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground"
+                ><Mail class="size-4" /> Email</a
+              >
+              <a
+                :href="links.github"
+                target="_blank"
+                class="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground"
+                ><Github class="size-4" /> GitHub</a
+              >
+              <a
+                :href="links.linkedin"
+                target="_blank"
+                class="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground"
+                ><Linkedin class="size-4" /> LinkedIn</a
+              >
             </div>
           </div>
         </div>
       </div>
 
-      <div class="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-6">
-        <p class="text-sm text-muted-foreground">{{ profile.name }} © 2026 · {{ profile.location }} · {{ profile.availability }}</p>
+      <div
+        class="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-6"
+      >
+        <p class="text-sm text-muted-foreground">
+          {{ profile.name }} © 2026 · {{ profile.location }} · {{ profile.availability }}
+        </p>
         <Button :href="`mailto:${links.email}`" variant="secondary">
           Say Hello
           <ArrowRight class="size-4" />
@@ -850,13 +937,13 @@ Set `/home/daiki/dev/portfolio/src/App.vue` to:
 
 ```vue
 <script setup lang="ts">
-import AboutSection from '@/components/AboutSection.vue'
-import FooterSection from '@/components/FooterSection.vue'
-import HeroSection from '@/components/HeroSection.vue'
-import Navbar from '@/components/Navbar.vue'
-import ProjectsSection from '@/components/ProjectsSection.vue'
-import TechStackSection from '@/components/TechStackSection.vue'
-import WhatIDoSection from '@/components/WhatIDoSection.vue'
+import AboutSection from "@/components/AboutSection.vue";
+import FooterSection from "@/components/FooterSection.vue";
+import HeroSection from "@/components/HeroSection.vue";
+import Navbar from "@/components/Navbar.vue";
+import ProjectsSection from "@/components/ProjectsSection.vue";
+import TechStackSection from "@/components/TechStackSection.vue";
+import WhatIDoSection from "@/components/WhatIDoSection.vue";
 </script>
 
 <template>
@@ -896,6 +983,7 @@ Expected: commit created.
 ## Task 5: Polish Responsiveness, Metadata, And Build
 
 **Files:**
+
 - Modify: `/home/daiki/dev/portfolio/index.html`
 - Modify: `/home/daiki/dev/portfolio/src/style.css`
 
@@ -909,7 +997,10 @@ Set `/home/daiki/dev/portfolio/index.html` to:
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Daiki, Adrian Melgar, is a Junior Full-Stack Developer based in Peru and available remotely." />
+    <meta
+      name="description"
+      content="Daiki, Adrian Melgar, is a Junior Full-Stack Developer based in Peru and available remotely."
+    />
     <meta name="theme-color" content="#0d100d" />
     <title>Daiki | Junior Full-Stack Developer</title>
   </head>
@@ -963,13 +1054,14 @@ Expected: commit created if files changed.
 ## Task 6: Final Verification And README
 
 **Files:**
+
 - Create: `/home/daiki/dev/portfolio/README.md`
 
 - [ ] **Step 1: Create README**
 
 Create `/home/daiki/dev/portfolio/README.md`:
 
-```md
+````md
 # Daiki Portfolio
 
 Professional portfolio scaffold for Adrian Melgar, also branded as Daiki.
@@ -990,6 +1082,7 @@ vp dev
 vp check
 vp build
 ```
+````
 
 ## Content
 
@@ -1000,7 +1093,8 @@ src/data/portfolio.ts
 ```
 
 Projects are local data for v1. Later, they can be loaded from a database-backed API without changing the page structure.
-```
+
+````
 
 - [ ] **Step 2: Run final verification**
 
@@ -1010,7 +1104,7 @@ Run:
 vp check
 vp build
 git status --short
-```
+````
 
 Expected:
 
