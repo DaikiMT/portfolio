@@ -4,12 +4,30 @@ export type Service = {
   description: string;
 };
 
+export const stack = [
+  "Vue",
+  "Vite+",
+  "JavaScript",
+  "TypeScript",
+  "Python",
+  "FastAPI",
+  "PostgreSQL",
+  "Oracle DB",
+  "Git",
+  "GitHub",
+  "AWS",
+] as const;
+
+export type StackItem = (typeof stack)[number];
+export type ProjectStatus = "in_progress" | "coming_soon";
+
 export type Project = {
   id: string;
   title: string;
-  status: "In Progress" | "Coming Soon";
+  status: ProjectStatus;
+  statusLabel: "In Progress" | "Coming Soon";
   description: string;
-  stack: string[];
+  stack: StackItem[];
 };
 
 export const profile = {
@@ -62,7 +80,8 @@ export const projects: Project[] = [
   {
     id: "portfolio-website",
     title: "Portfolio Website",
-    status: "In Progress",
+    status: "in_progress",
+    statusLabel: "In Progress",
     description:
       "A personal portfolio built to present my skills, services, and learning path as a junior developer.",
     stack: ["Vue", "Vite+", "TypeScript"],
@@ -70,7 +89,8 @@ export const projects: Project[] = [
   {
     id: "full-stack-dashboard",
     title: "Full-Stack Dashboard",
-    status: "Coming Soon",
+    status: "coming_soon",
+    statusLabel: "Coming Soon",
     description:
       "A planned dashboard project for practicing authenticated UI, API design, and database-backed workflows.",
     stack: ["Vue", "FastAPI", "PostgreSQL"],
@@ -78,23 +98,10 @@ export const projects: Project[] = [
   {
     id: "automation-tool",
     title: "Automation Tool",
-    status: "Coming Soon",
+    status: "coming_soon",
+    statusLabel: "Coming Soon",
     description:
       "A planned utility for exploring Python automation, repeatable workflows, and practical developer tooling.",
     stack: ["Python", "GitHub", "AWS"],
   },
-];
-
-export const stack = [
-  "Vue",
-  "Vite+",
-  "JavaScript",
-  "TypeScript",
-  "Python",
-  "FastAPI",
-  "PostgreSQL",
-  "Oracle DB",
-  "Git",
-  "GitHub",
-  "AWS",
 ];
